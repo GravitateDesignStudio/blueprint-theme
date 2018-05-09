@@ -51,5 +51,3 @@ The following NPM script aliases have been include and can be run with `npm run 
 * `build-js` - Run the Gulp build task for your JavaScript files
 * `build` - Run both the CSS and JS build tasks together
 * `watch` - Start a BrowserSync proxy instance and put both build tasks into a watch state where they will trigger on any changes to the source files
-
-test
