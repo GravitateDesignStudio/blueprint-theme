@@ -1,5 +1,6 @@
 /* global jQuery */
 
+import Swiper from 'swiper';
 import objectFitImages from 'object-fit-images';
 import gravUtil from './util/grav-util';
 import ThemeWelcome from './components/testing/theme-welcome';
@@ -38,6 +39,28 @@ jQuery(function ($) {
 		if ($siteHeaderEls.length) {
 			instances.components.siteHeader = new SiteHeader($siteHeaderEls.first());
 		}
+
+		$('.block-image-gallery .swiper-container').each(function(index){
+			var block_index = $(this).closest('.block-container').attr('data-block-index');
+			var prev = $(this).find('.swiper-button-prev');
+			var next = $(this).find('.swiper-button-next');
+			var pagination = $(this).find('.swiper-pagination');
+			var swiperImageGallery = new Swiper($(this), {
+				loop: true,
+				autoHeight: true,
+				slidesPerView: 1,
+				observer: true,
+				navigation: {
+					nextEl: next,
+					prevEl: prev,
+				},
+				pagination: {
+					el: pagination,
+					type: 'bullets',
+					clickable: true,
+				},
+			});
+		});
 
 		objectFitImages();
 	});
