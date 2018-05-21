@@ -5,6 +5,7 @@ Grav\Vendor\GravitateBlocks::enforce_background_colors(array(
 	'block-bg-none' => 'None',
 	'block-bg-image' => 'Image',
 	'bg-white' => 'White',
+	'bg-gray' => 'Gray',
 	'bg-black' => 'Black'
 ));
 
