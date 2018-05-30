@@ -29,5 +29,28 @@
 }
 
 /*************************************
-[BLOCK]
+Media w/ Content
 **************************************/
+
+.block-media-content {
+	&__media-type {
+		&--embed-container,
+		&--video-container,
+		&--image-container {
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+}
+
+/*************************************
+Placeholder
+**************************************/
+.block-placeholder {
+	img {
+		display: block;
+		width: 100%;
+	}
+}

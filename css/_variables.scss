@@ -31,6 +31,7 @@ $black:         #000000;
 $blue:          #145CA1;
 $red:           #98143C;
 $gray:          #EEEEEE;
+$gray-dark:     #666666;
 $white:         #ffffff;
 
 
@@ -46,7 +47,8 @@ $bg-colors: (
     black: $black,
     blue: $blue,
     red: $red,
-    gray: $gray
+    gray: $gray,
+    gray-dark: $gray-dark
 );
 
 $bg-colors-with-light-text: (
@@ -55,7 +57,8 @@ $bg-colors-with-light-text: (
     'black',
     'blue',
     'brown',
-    'red'
+    'red',
+    'gray-dark'
 );
 
 

@@ -62,6 +62,28 @@ jQuery(function ($) {
 			});
 		});
 
+		$('.block-testimonials .swiper-container').each(function(index){
+			var block_index = $(this).closest('.block-container').attr('data-block-index');
+			var prev = $(this).find('.swiper-button-prev');
+			var next = $(this).find('.swiper-button-next');
+			var pagination = $(this).find('.swiper-pagination');
+			var swiperTestimonials = new Swiper($(this), {
+				loop: true,
+				autoHeight: true,
+				slidesPerView: 1,
+				observer: true,
+				navigation: {
+					nextEl: next,
+					prevEl: prev,
+				},
+				pagination: {
+					el: pagination,
+					type: 'bullets',
+					clickable: true,
+				},
+			});
+		});
+
 		objectFitImages();
 	});
 
