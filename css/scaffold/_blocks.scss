@@ -33,5 +33,19 @@ Map Block
 **************************************/
 
 .block-map {
-	
+	.info-bubble-content {
+		padding: 20px 30px 20px 20px;
+		* {
+			color: $white;
+		}
+		h5 {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+	}
+	.js-info-bubble-close {
+		top: 10px !important;
+		right: 10px !important;
+	}
 }
