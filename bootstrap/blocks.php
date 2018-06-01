@@ -5,11 +5,20 @@ Grav\Vendor\GravitateBlocks::enforce_background_colors(array(
 	'block-bg-none' => 'None',
 	'block-bg-image' => 'Image',
 	'bg-white' => 'White',
+	'bg-gray' => 'Gray',
+	'bg-gray-dark' => 'Dark Gray',
 	'bg-black' => 'Black'
 ));
 
 // make sure blocks appear in alphabetical order by label in the flexible content field
 Grav\Vendor\GravitateBlocks::sort_block_names_alphabetically();
+
+add_filter('grav_blocks_testimonials_cpt', function($testimonial_cpts) {
+
+	$testimonial_cpts = array('post');
+
+	return $testimonial_cpts;
+});
 
 // Ensure Grav Blocks are viewable on the pages that require them
 add_filter('grav_is_viewable', function($is_viewable) {
