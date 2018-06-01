@@ -73,9 +73,9 @@ Media w/ Content
 				@for $i from 6 through 12 {
 					@include media-min($global-width) {
 						&.medium-#{$i} {
-							$content-col-width: ((12 - $i) / 12) * 1300;
-							max-width: calc((100% - #{$content-col-width}px) - (100vw - #{$global-width}) / 2);
-							flex: 0 0 calc((100% - #{$content-col-width}px) - (100vw - #{$global-width}) / 2);
+							$content-col-width: ((12 - $i) / 12) * 1300px;
+							max-width: calc((100% - #{$content-col-width}) - (100vw - #{$global-width}) / 2);
+							flex: 0 0 calc((100% - #{$content-col-width}) - (100vw - #{$global-width}) / 2);
 						}
 					}
 				}
