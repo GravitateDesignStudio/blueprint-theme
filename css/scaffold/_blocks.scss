@@ -43,6 +43,67 @@ Media w/ Content
 			}
 		}
 	}
+	.block-inner.fullbleed {
+		padding: 0;
+		.row {
+			@include media-min($global-width) {
+				max-width: 100%;
+			}
+			.block-media-content__col-content {
+				padding: 3rem calc(2 * #{$gutter-width-small}) map-deep-get($block-padding, 'small', 'bottom');
+
+				@include media-min($medium) {
+					padding: 3rem calc(2 * #{$gutter-width-small}) map-deep-get($block-padding, 'medium', 'bottom');
+				}
+
+				@include media-min($large) {
+					padding: 3remcalc(2 * #{$gutter-width}) map-deep-get($block-padding, 'large', 'bottom');
+				}
+				@for $i from 1 through 12 {
+					@include media-min($global-width) {
+						&.medium-#{$i} {
+							max-width: calc((#{$i} / 12) * #{$global-width});
+							flex: 0 0 calc((#{$i} / 12) * #{$global-width});
+						}
+					}
+				}
+			}
+			.block-media-content__col-media {
+				padding: 0;
+				@for $i from 6 through 12 {
+					@include media-min($global-width) {
+						&.medium-#{$i} {
+							$content-col-width: ((12 - $i) / 12) * 1300;
+							max-width: calc((100% - #{$content-col-width}px) - (100vw - #{$global-width}) / 2);
+							flex: 0 0 calc((100% - #{$content-col-width}px) - (100vw - #{$global-width}) / 2);
+						}
+					}
+				}
+				.block-media-content__media-type {
+					&--embed-container,
+					&--video-container,
+					&--image-container {
+						position: relative;
+						overflow: hidden;
+						height: 100%;
+						img {
+							top: 0;
+				            left: 0;
+				            right: 0;
+				            width: 100%;
+				            height: 100%; /* 216/16 */
+				            object-fit: cover;
+				            position: absolute;
+				            object-position: center center;
+							font-family: 'object-fit: cover;';
+							display: block;
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /*************************************
@@ -52,5 +113,27 @@ Placeholder
 	img {
 		display: block;
 		width: 100%;
+	}
+}
+
+/*************************************
+Map Block
+**************************************/
+
+.block-map {
+	.info-bubble-content {
+		padding: 20px 30px 20px 20px;
+		* {
+			color: $white;
+		}
+		h5 {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+	}
+	.js-info-bubble-close {
+		top: 10px !important;
+		right: 10px !important;
 	}
 }
