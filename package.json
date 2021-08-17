@@ -1,6 +1,6 @@
 {
 	"name": "blueprint-theme",
-	"version": "3.2.0",
+	"version": "4.0.0",
 	"description": "Blueprint Theme",
 	"scripts": {
 		"eslint": "npx eslint js/**/*.js",
@@ -25,9 +25,7 @@
 		"embla-carousel": "^4.5.3",
 		"foundation-sites": "^6.6.3",
 		"imagebuddy": "^1.1.1",
-		"intersection-observer": "^0.12.0",
-		"normalize.css": "^8.0.0",
-		"object-fit-images": "^3.2.4"
+		"normalize.css": "^8.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.10.1",
@@ -70,10 +68,8 @@
 		"babel": true
 	},
 	"browserslist": [
-		"last 2 versions",
-		"IE >= 11",
-		"not IE <= 10",
-		"not ie_mob <= 10"
+		"last 2 versions and > 0.5%",
+		"not IE <= 11"
 	],
 	"prettier": {
 		"tabWidth": 4,

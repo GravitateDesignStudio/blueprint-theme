@@ -1,4 +1,4 @@
-import objectFitImages from 'object-fit-images';
+// import objectFitImages from 'object-fit-images';
 import ImageBuddy from 'imagebuddy';
 
 import ThemeWelcome from './components/testing/theme-welcome';
@@ -12,7 +12,6 @@ import PostsListSearch from './components/posts-list/posts-list-search';
 import { processExternalLinks } from './util/general-util';
 import ScrollWatcher from './util/scroll-watcher';
 import SiteEvents, { SiteEventNames } from './util/site-events';
-import { loadIntersectionObserver } from './util/load-dependencies';
 import { createSingleUseObserver } from './util/intersection-observer';
 import { initHelloBar } from './util/hello-bar';
 
@@ -65,9 +64,9 @@ class App {
 			// debug: true
 		});
 
-		ImageBuddy.on('image-loaded', (imgEl) => {
-			objectFitImages(imgEl);
-		});
+		// ImageBuddy.on('image-loaded', (imgEl) => {
+		// 	objectFitImages(imgEl);
+		// });
 
 		SiteEvents.subscribe(SiteEventNames.IMAGEBUDDY_TRIGGER_UPDATE, (opts) => {
 			this.instances.imageBuddy.update(opts || {});
@@ -83,9 +82,9 @@ class App {
 			}
 		});
 
-		// ObjectFitImages: only act upon images that have a valid src attribute
-		// Note: use the 'object-fit-polyfill' SCSS mixin to create the necessary 'font-family' attribute
-		objectFitImages('img:not([src^="data:"])');
+		// // ObjectFitImages: only act upon images that have a valid src attribute
+		// // Note: use the 'object-fit-polyfill' SCSS mixin to create the necessary 'font-family' attribute
+		// objectFitImages('img:not([src^="data:"])');
 	}
 
 	async initComponents() {
@@ -130,24 +129,18 @@ class App {
 		// TODO: initialize templates here
 	}
 
-	async initBlocks() {
+	initBlocks() {
 		// TODO: initialize blocks here
 
 		// setup block animation watchers
 		const animateBlocks = document.querySelectorAll('.block-animate');
 
 		if (animateBlocks && animateBlocks.length) {
-			try {
-				await loadIntersectionObserver();
-
-				animateBlocks.forEach((watchEl) =>
-					createSingleUseObserver(watchEl, (entry, el) => {
-						el.classList.remove('block-animate');
-					})
-				);
-			} catch (err) {
-				console.error(err);
-			}
+			animateBlocks.forEach((watchEl) =>
+				createSingleUseObserver(watchEl, (entry, el) => {
+					el.classList.remove('block-animate');
+				})
+			);
 		}
 	}
 

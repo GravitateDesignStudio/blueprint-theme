@@ -59,25 +59,3 @@ export function loadEmblaCarousel() {
 			});
 	});
 }
-
-/**
- * Load the Intersection Observer polyfill library. Returns a promise with the
- * library object when successful.
- *
- * @returns {Promise<object>}
- */
-export function loadIntersectionObserver() {
-	return new Promise((resolve, reject) => {
-		if (typeof window.IntersectionObserver !== 'undefined') {
-			resolve(true);
-		}
-
-		import(/* webpackChunkName: "intersection-observer" */ 'intersection-observer')
-			.then(() => {
-				resolve(true);
-			})
-			.catch((err) => {
-				reject(err);
-			});
-	});
-}
