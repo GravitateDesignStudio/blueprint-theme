@@ -1,6 +1,19 @@
 # Gravitate WP Starter Theme
 
-**Note**: If you have not yet done so, make sure to run `npm install` and `composer install` in the theme root to install the necessary dependencies
+## Getting Started
+
+(steps for first time setup only)
+
+1. Perform a text search/replace across all files within the theme replacing `ClientNamespace` with the name of the project or client.
+2. Rename the `inc/ClientNamespace` path to `inc/project_name` (`project_name` is the name selected in step #1).
+3. Run `composer update` so that the autoload files are regenerated to reflect the new client include path.
+
+(steps for setting up the site in a new development environment)
+
+1. Run `npm install` to install the necessary NPM packages for the build process.
+2. Run `npm run build` to build the JS and CSS assets for the theme.
+3. Create a `local_config.json` file for your local hosting configuration using `local_config_example.json` as a template.
+4. Run `npm run watch` and view the site at `https://localhost:3000`.
 
 ## Features
 

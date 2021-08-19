@@ -1,6 +1,24 @@
 <div class="theme-welcome">
 	<div class="contain wysiwyg">
-		<p><strong>Note:</strong> If you have not yet done so, make sure to run <code>npm install</code> and <code>composer install</code> in the theme root to install the necessary dependencies</p>
+		<h3>Getting Started</h3>
+
+		<hr>
+
+		<p>(steps for first time setup only)</p>
+		<ol>
+			<li>Perform a text search/replace across all files within the theme replacing <code>ClientNamespace</code> with the name of the project or client.</li>
+			<li>Rename the <code>inc/ClientNamespace</code> path to <code>inc/project_name</code> (<code>project_name</code> is the name selected in step #1).</li>
+			<li>Run <code>composer update</code> so that the autoload files are regenerated to reflect the new client include path.</li>
+		</ol>
+
+		<p>(steps for setting up the site in a new development environment)</p>
+
+		<ol>
+			<li>Run <code>npm install</code> to install the necessary NPM packages for the build process.</li>
+			<li>Run <code>npm run build</code> to build the JS and CSS assets for the theme.</li>
+			<li>Create a <code>local_config.json</code> file for your local hosting configuration using <code>local_config_example.json</code> as a template.</li>
+			<li>Run <code>npm run watch</code> and view the site at <code>https://localhost:3000</code>.</li>
+		</ol>
 
 		<h3>Features</h3>
 
