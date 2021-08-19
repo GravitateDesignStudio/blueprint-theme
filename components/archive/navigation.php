@@ -8,11 +8,11 @@ add_filter('previous_posts_link_attributes', function ($atts) {
 });
 
 ?>
-<div class="row archive__navigation">
-	<div class="columns small-6">
-		&laquo; <?php next_posts_link(__('Older Entries', 'blueprint')); ?>
+<div class="archive__navigation contain">
+	<div class="archive__navigation-link">
+		&laquo; <?php next_posts_link(__('Older Entries', ClientNamespace\Constants\TextDomains::DEFAULT)); ?>
 	</div>
-	<div class="columns small-6 text-right">
-		<?php previous_posts_link(__('Newer Entries', 'blueprint')); ?> &raquo;
+	<div class="archive__navigation-link text-right">
+		<?php previous_posts_link(__('Newer Entries', ClientNamespace\Constants\TextDomains::DEFAULT)); ?> &raquo;
 	</div>
 </div>

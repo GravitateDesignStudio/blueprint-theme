@@ -22,30 +22,26 @@ $backgrounds = $backgrounds ? array_filter($backgrounds, function ($key) {
 		});
 	});
 </script>
-<div id="style-testing__content">
-	<section class="section-container wysiwyg">
-		<div class="row section-inner">
-			<div class="columns small-12">
-				<?php WPUtil\Component::render('components/testing/style-testing'); ?>
-			</div>
-		</div>
-	</section>
+<div id="style-testing__content" class="wysiwyg">
+	<?php WPUtil\Component::render('components/testing/style-testing'); ?>
 </div>
-<div class="style-testing__color-selector faux-row">
-	<label for="bg-color">Background Color:</label>
-	<select id="bg-color" class="style-testing__select--color">
-		<?php
-		foreach ($backgrounds as $class => $label) {
-			?>
-			<option value="<?php echo esc_attr($class); ?>"
-				<?php if ($class === '') { ?>selected<?php } ?>
-			>
-				<?php echo esc_html($label); ?>
-			</option>
+<div class="style-testing__color-selector">
+	<div class="contain">
+		<label for="bg-color">Background Color:</label>
+		<select id="bg-color" class="style-testing__select--color">
 			<?php
-		}
-		?>
-	</select>
+			foreach ($backgrounds as $class => $label) {
+				?>
+				<option value="<?php echo esc_attr($class); ?>"
+					<?php if ($class === '') { ?>selected<?php } ?>
+				>
+					<?php echo esc_html($label); ?>
+				</option>
+				<?php
+			}
+			?>
+		</select>
+	</div>
 </div>
 <?php
 

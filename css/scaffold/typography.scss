@@ -41,24 +41,23 @@ li {
  *	Global element styling
  */
 body {
-	font: $body-font;
-	color: $body-font-color;
+	font: var(--body-font);
+	color: var(--body-font-color);
 }
 
 p {
-	font: $body-font;
-	color: $body-font-color;
+	font: var(--body-font);
+	color: var(--body-font-color);
 }
 
 blockquote {
-	font: $body-font;
-	color: $body-font-color;
+	font: var(--body-font);
+	color: var(--body-font-color);
 }
 
-h1,
-%h1 {
-	font: normal normal $font-weight-bold 3.6rem / 1.21 $font-primary;
-	color: $color-black;
+h1 {
+	font: normal normal var(--font-weight-bold) 3.6rem / 1.21 var(--font-primary);
+	color: var(--h1-color);
 	text-transform: uppercase;
 
 	@include media-min($large) {
@@ -66,35 +65,30 @@ h1,
 	}
 }
 
-h2,
-%h2 {
-	font: normal normal $font-weight-bold 3.6rem / 1.22 $font-primary;
-	color: $color-black;
+h2 {
+	font: normal normal var(--font-weight-bold) 3.6rem / 1.22 var(--font-primary);
+	color: var(--h2-color);
 	text-transform: uppercase;
 }
 
-h3,
-%h3 {
-	font: normal normal $font-weight-medium 2.6rem / 1.25 $font-primary;
-	color: $color-black;
+h3 {
+	font: normal normal var(--font-weight-medium) 2.6rem / 1.25 var(--font-primary);
+	color: var(--h3-color);
 }
 
-h4,
-%h4 {
-	font: normal normal $font-weight-medium 1.8rem / 1.44 $font-primary;
-	color: $color-black;
+h4 {
+	font: normal normal var(--font-weight-medium) 1.8rem / 1.44 var(--font-primary);
+	color: var(--h4-color);
 }
 
-h5,
-%h5 {
-	font: normal normal $font-weight-medium 1.6rem / 1.5 $font-primary;
-	color: $color-black;
+h5 {
+	font: normal normal var(--font-weight-medium) 1.6rem / 1.5 var(--font-primary);
+	color: var(--h5-color);
 }
 
-h6,
-%h6 {
-	font: normal normal $font-weight-medium 1.2rem / 1.66 $font-primary;
-	color: $color-black;
+h6 {
+	font: normal normal var(--font-weight-medium) 1.2rem / 1.66 var(--font-primary);
+	color: var(--h6-color);
 }
 
 /**
@@ -102,13 +96,13 @@ h6,
  */
 .large,
 %large-text {
-	font-size: #{$body-font-size + 0.2rem};
+	font-size: calc(var(--body-font-size) + 0.2rem);
 }
 
 small,
 .small,
 %small-text {
-	font-size: #{$body-font-size - 0.2rem};
+	font-size: calc(var(--body-font-size) - 0.2rem);
 }
 
 // Useful classes that are missing without the Foundation typography styles

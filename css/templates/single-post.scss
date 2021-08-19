@@ -1,0 +1,58 @@
+.tmpl-single-post {
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr;
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+
+		@include media-min($medium) {
+			padding-top: 8rem;
+		}
+
+		@include media-min($large) {
+			grid-template-columns: repeat(12, 1fr);
+			padding-top: 12rem;
+		}
+	}
+
+	@include media-min($large) {
+		&__share-icons {
+			position: relative;
+			grid-column: 1 / 1;
+			grid-row: 1;
+		}
+
+		&__content {
+			grid-column: 2 / span 10;
+			grid-row: 1;
+		}
+	}
+
+	&__share-icons {
+		margin-top: 3rem;
+
+		@include media-min($large) {
+			margin-top: 0;
+		}
+	}
+
+	&__share-icons-inner {
+		display: flex;
+		gap: 1rem;
+
+		@include media-min($large) {
+			position: sticky;
+			top: 8rem;
+			flex-direction: column;
+			transition: top var(--header-transition-speed) ease-in-out;
+
+			html.scroll-up & {
+				top: calc(8rem + var(--header-height-lg));
+			}
+		}
+	}
+
+	&__post-content {
+		margin-top: 4rem;
+	}
+}

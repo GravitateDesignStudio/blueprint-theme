@@ -1,11 +1,13 @@
 .wysiwyg {
 	a:not(.button) {
+		color: var(--anchor-link-normal-color);
 		text-decoration: none;
-		font-weight: $font-weight-semibold;
-		transition: color $default-transition-speed ease-in-out;
+		font-weight: var(--font-weight-semibold);
+		transition: color var(--default-transition-speed) ease-in-out;
 
 		&:hover,
 		&:active {
+			color: var(--anchor-link-hover-color);
 			text-decoration: underline;
 		}
 	}
@@ -13,6 +15,7 @@
 	ul,
 	ol {
 		padding-left: 0;
+		color: var(--body-font-color);
 
 		li {
 			margin: 0 0 0.5rem 1.5rem;
@@ -25,15 +28,6 @@
 			li {
 				margin-left: 1.5rem;
 			}
-		}
-	}
-}
-
-@include dark-bg('', '') {
-	&.wysiwyg,
-	.wysiwyg {
-		a:not(.button) {
-			color: $text-light;
 		}
 	}
 }

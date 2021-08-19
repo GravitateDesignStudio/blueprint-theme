@@ -79,7 +79,7 @@
 		width: 100%;
 		height: 100%;
 
-		color: $color-white;
+		color: var(--color-white);
 	}
 
 	&__pagination {
@@ -96,12 +96,13 @@
 		margin: 0 0.5rem;
 		cursor: pointer;
 
-		background-color: $color-white;
+		background-color: var(--color-white);
 
-		transition: background-color $default-transition-speed $default-transition-easing;
+		transition: background-color var(--default-transition-speed)
+			var(--default-transition-easing);
 
 		&.active {
-			background-color: $color-blue;
+			background-color: var(--color-blue);
 		}
 
 		&:first-child {

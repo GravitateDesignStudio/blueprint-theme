@@ -1,52 +1,59 @@
-@each $bg_color_name, $color_values in $bg-colors {
-	.bg-#{"" + $bg_color_name} {
-		background-color: map-get($color_values, "background");
-		background: map-get($color_values, "background");
-		color: map-get($color_values, "text");
+.bg-black,
+.bg-blue,
+.bg-red,
+.block-bg-image:not(.block-bg-image--dark-text) {
+	--body-font-color: var(--color-white);
 
-		label,
-		p,
-		blockquote,
-		a,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: inherit;
-		}
+	--h1-color: var(--color-white);
+	--h2-color: var(--color-white);
+	--h3-color: var(--color-white);
+	--h4-color: var(--color-white);
+	--h5-color: var(--color-white);
+	--h6-color: var(--color-white);
 
-		@if (map-has-key($color_values, "elements")) {
-			@each $element, $element_color in map-get($color_values, "elements") {
-				#{$element} {
-					color: $element_color;
-				}
-			}
-		}
-	}
+	--button-primary-normal-text-color: var(--color-black);
+	--button-primary-normal-bg-color: var(--color-white);
+	--button-primary-normal-border-color: var(--color-white);
+
+	--button-primary-disabled-bg-color: rgba(var(--color-rgb-white), 0.4);
+	--button-primary-disabled-text-color: rgba(var(--color-rgb-black), 0.7);
+
+	--button-secondary-normal-text-color: var(--color-white);
+	--button-secondary-normal-border-color: var(--color-white);
+
+	--button-secondary-disabled-text-color: rgba(var(--color-rgb-white), 0.4);
+	--button-secondary-disabled-border-color: rgba(var(--color-rgb-white), 0.4);
+
+	--form-checkmark-img: url("#{$theme-url-base}/media/images/check-white.png");
+	--form-radio-fill-color: var(--color-white);
+}
+
+.bg-black,
+.bg-blue,
+.bg-red {
+	--anchor-link-normal-color: var(--color-white);
+	--anchor-link-hover-color: var(--color-white);
+}
+
+.bg-black {
+	background-color: var(--color-black);
+}
+
+.bg-blue {
+	background-color: var(--color-blue);
+}
+
+.bg-red {
+	background-color: var(--color-red);
+}
+
+.bg-gray {
+	background-color: var(--color-gray);
 }
 
 .block-bg-image {
-	background-color: $color-white;
+	background-color: var(--color-white);
 	background-size: cover;
-	color: $color-white;
-
-	&--dark-text {
-		color: $text-dark;
-	}
-
-	label,
-	p,
-	blockquote,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: inherit;
-	}
 
 	&.block-bg-overlay {
 		&::before {

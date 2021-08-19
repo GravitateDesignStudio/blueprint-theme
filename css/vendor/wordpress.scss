@@ -26,14 +26,14 @@ WordPress Specifics
 }
 
 .wp-caption {
-	background: rgba(0, 0, 0, 0.1);
-	border: 1px rgba(0, 0, 0, 0.3) solid;
+	background: rgba(var(--color-rgb-black), 0.1);
+	border: 1px rgba(var(--color-rgb-black), 0.3) solid;
 	padding: 15px;
 	font-size: 0.85em;
 	text-align: center;
 
 	img {
-		border: 1px rgba(0, 0, 0, 0.3) solid;
+		border: 1px rgba(var(--color-rgb-black), 0.3) solid;
 		margin: 0 auto 15px;
 		max-width: 98.5%;
 		width: auto;

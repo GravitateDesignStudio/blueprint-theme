@@ -1,13 +1,8 @@
 .posts-list {
-	&__row-title {
-		margin-bottom: 4rem;
-
-		@include media-min($medium) {
-			margin-bottom: 6rem;
-		}
-	}
-
 	&__row-featured {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--grid-column-gutter);
 		margin-bottom: 4rem;
 
 		@include media-min($medium) {
@@ -15,26 +10,26 @@
 		}
 
 		@include media-min($large) {
+			grid-template-columns: 1fr 1fr;
 			margin-bottom: 10rem;
 		}
 	}
 
 	&__row-filters {
+		display: flex;
+		flex-direction: column;
+		gap: var(--grid-column-gutter);
 		margin-bottom: 4rem;
 
 		@include media-min($medium) {
+			flex-direction: row;
+			justify-content: space-evenly;
 			margin-bottom: 6rem;
 		}
+	}
 
-		@include media-max($medium) {
-			label {
-				display: none;
-			}
-
-			.columns + .columns {
-				margin-top: 2rem;
-			}
-		}
+	&__filter {
+		width: 100%;
 	}
 
 	&__filter-select {
@@ -42,10 +37,18 @@
 	}
 
 	&__cards-container {
-		margin-top: -4rem;
+		--cards-per-row: 1;
 
-		.columns {
-			margin-top: 4rem;
+		display: grid;
+		grid-template-columns: repeat(var(--cards-per-row), 1fr);
+		gap: var(--grid-column-gutter);
+
+		@include media-min($medium) {
+			--cards-per-row: 2;
+		}
+
+		@include media-min($large) {
+			--cards-per-row: 3;
 		}
 	}
 
@@ -68,7 +71,7 @@
 		border-top: 0.75rem solid rgba(transparent, 0.05);
 		border-right: 0.75rem solid rgba(transparent, 0.05);
 		border-bottom: 0.75rem solid rgba(transparent, 0.05);
-		border-left: 0.75rem solid $color-blue;
+		border-left: 0.75rem solid var(--color-blue);
 		transform: translateZ(0);
 		animation: spin-loader 1s infinite linear;
 		animation-play-state: paused;

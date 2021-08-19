@@ -1,26 +1,18 @@
 /*************************************
-Include Functions and Mixins
+SASS Functions and Mixins
 **************************************/
 @import "utility/functions";
 @import "utility/mixins";
 
 /*************************************
-Include Variables
+Variables
 **************************************/
 @import "variables";
 
-// included in foundation
-// @import '../node_modules/normalize.css/normalize';
-
 /*************************************
-Foundation Grid
+Normalize.css
 **************************************/
-@import "../node_modules/foundation-sites/scss/foundation";
-
-@include foundation-global-styles;
-@include foundation-flex-grid;
-@include foundation-visibility-classes;
-@include foundation-flex-classes;
+@import "../node_modules/normalize.css/normalize";
 
 /*************************************
 Scaffolding
@@ -30,6 +22,7 @@ Scaffolding
 @import "scaffold/buttons";
 @import "scaffold/forms";
 @import "scaffold/blocks";
+@import "scaffold/layout";
 
 /*************************************
 Vendor Styles
@@ -40,11 +33,14 @@ Vendor Styles
 @import "vendor/embla";
 
 /*************************************
-Main Project Custom Files
+Global Styles
 **************************************/
 @import "globals";
 @import "wysiwyg";
 
+/*************************************
+Components
+**************************************/
 @import "components/style-testing";
 
 @import "components/header";
@@ -65,3 +61,14 @@ Main Project Custom Files
 @import "components/ui/input-with-icon";
 
 @import "components/posts-list/posts-list";
+@import "components/posts-list/posts-list-search";
+
+/*************************************
+Blocks
+**************************************/
+@import "blocks/columns";
+
+/*************************************
+Templates
+**************************************/
+@import "templates/single-post";

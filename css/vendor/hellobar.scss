@@ -30,7 +30,7 @@ body.hellobar--available.hellobar--position-top {
 	}
 
 	&__wrapper {
-		max-width: $global-width;
+		max-width: var(--global-width);
 		margin: 0 auto;
 		display: flex;
 	}

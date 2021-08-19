@@ -49,13 +49,13 @@
 	}
 
 	div.validation_error {
-		color: $error-text;
+		color: var(--error-text);
 		font-size: 1.2em;
 		font-weight: bold;
 	}
 
 	.validation_message {
-		color: $error-text;
+		color: var(--error-text);
 		font-weight: bold;
 		letter-spacing: normal;
 		font-size: 0.8em;

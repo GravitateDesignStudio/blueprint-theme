@@ -7,17 +7,13 @@ WPUtil\Component::render('components/banners/banner-default', [
 
 ?>
 <main class="tmpl-search">
-	<div class="row align-center">
-		<div class="columns small-12 large-10">
-			<?php
-			global $wp_query;
+	<?php
+	global $wp_query;
 
-			WPUtil\Component::render('components/posts-list/posts-list-search', [
-				'wp_query_obj' => $wp_query
-			]);
-			?>
-		</div>
-	</div>
+	WPUtil\Component::render('components/posts-list/posts-list-search', [
+		'wp_query_obj' => $wp_query
+	]);
+	?>
 </main>
 <?php
 

@@ -1,5 +1,5 @@
 .banner {
-	z-index: $z-root;
+	z-index: var(--z-root);
 	position: relative;
 
 	&__cover-video-container {
@@ -58,8 +58,8 @@
 			left: 0;
 			background-image: linear-gradient(
 				0deg,
-				rgba($color-black, 0.1) 0%,
-				rgba($color-black, 0.25) 100%
+				rgba(var(--color-rgb-black), 0.1) 0%,
+				rgba(var(--color-rgb-black), 0.25) 100%
 			);
 		}
 	}

@@ -17,7 +17,7 @@ if (isset($background_image)) {
 ?>
 <div class="banner banner-default bg-black">
 	<?php WPUtil\Component::render('components/banners/partials/banner-background', $background_image_opts); ?>
-	<div class="banner-default__content faux-row">
+	<div class="banner-default__content contain">
 		<h1 class="banner-default__title"><?php echo esc_html($title); ?></h1>
 		<?php
 		if ($button->link && $button->text)

@@ -1,0 +1,93 @@
+.block-columns {
+	[data-num-col="1"] {
+		.block-columns__column {
+			grid-column: 1 / span 12;
+
+			@include media-min($large) {
+				grid-column: 2 / span 10;
+			}
+		}
+	}
+
+	[data-num-col="2"] {
+		.block-columns__column {
+			--col-start: 1;
+			--col-span: 12;
+
+			grid-column: var(--col-start) / span var(--col-span);
+
+			&:first-child {
+				@include media-min($medium) {
+					--col-span: 6;
+				}
+
+				@include media-min($large) {
+					--col-start: 2;
+					--col-span: 5;
+				}
+			}
+
+			&:last-child {
+				@include media-min($medium) {
+					--col-start: 7;
+					--col-span: 6;
+				}
+
+				@include media-min($large) {
+					--col-start: 7;
+					--col-span: 5;
+				}
+			}
+		}
+
+		@include media-min($medium) {
+			&[data-format="sidebar-left"] {
+				.block-columns__column {
+					&:first-child {
+						--col-start: 1;
+						--col-span: 4;
+					}
+
+					&:last-child {
+						--col-start: 5;
+						--col-span: 8;
+					}
+				}
+			}
+
+			&[data-format="sidebar-right"] {
+				.block-columns__column {
+					&:first-child {
+						--col-start: 1;
+						--col-span: 8;
+					}
+
+					&:last-child {
+						--col-start: 9;
+						--col-span: 4;
+					}
+				}
+			}
+		}
+	}
+
+	[data-num-col="3"] {
+		--grid-num-cols: 1;
+
+		@include media-min($large) {
+			--grid-num-cols: 3;
+		}
+	}
+
+	[data-num-col="4"] {
+		--grid-num-cols: 1;
+
+		@include media-min($medium) {
+			--grid-num-cols: 2;
+		}
+
+		@include media-min($large) {
+			--grid-num-cols: 4;
+		}
+	}
+}

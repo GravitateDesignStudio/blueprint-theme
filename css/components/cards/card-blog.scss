@@ -1,6 +1,6 @@
 .card-blog {
 	display: block;
-	background: $color-gray;
+	background: var(--color-gray);
 	text-decoration: none;
 
 	&__image-container {
@@ -22,6 +22,6 @@
 	}
 
 	&__content {
-		color: $text-dark;
+		color: var(--color-black);
 	}
 }

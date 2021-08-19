@@ -20,7 +20,6 @@ WPUtil\Component::render('components/posts-list/posts-list', [
 	'add_container_classes' => ['posts-list--search'],
 	'current_page' => $current_page,
 	'no_results_message' => $no_results_message,
-	'card_col_classes' => ['columns', 'small-12'],
 	'filter_render_functions' => [
 		// search
 		function () {

@@ -6,40 +6,34 @@ WPUtil\Component::render('components/banners/banner-default', [
 ]);
 
 ?>
-<main class="main-content">
-	<div class="tmpl-archive">
-		<?php
-		if (have_posts())
-		{
-			?>
-			<div class="row align-center archive__cards-container">
-				<?php
-				while (have_posts())
-				{
-					?>
-					<div class="columns small-12 large-10">
-						<?php
-						the_post();
-
-						WPUtil\Component::render('components/cards/card-search');
-						?>
-					</div>
-					<?php
-				}
-				?>
-			</div>
-			<?php
-
-			WPUtil\Component::render('components/archive/navigation');
-		}
-		else
-		{
-			?>
-			<p>No posts were found</p>
-			<?php
-		}
+<main class="tmpl-archive">
+	<?php
+	if (have_posts())
+	{
 		?>
-	</div>
+		<div class="contain tmpl-archive__cards-container">
+			<?php
+			while (have_posts())
+			{
+				the_post();
+
+				WPUtil\Component::render('components/cards/card-search');
+			}
+			?>
+		</div>
+		<?php
+
+		WPUtil\Component::render('components/archive/navigation');
+	}
+	else
+	{
+		?>
+		<div class="contain layout__padded-single-col">
+			<p>No posts were found</p>
+		</div>
+		<?php
+	}
+	?>
 </main>
 <?php
 

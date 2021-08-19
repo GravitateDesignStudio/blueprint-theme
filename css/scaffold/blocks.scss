@@ -1,8 +1,8 @@
 // remove default 'block-inner' top padding from the second block
 // in a series of two with the same background color
-@each $bg_color_name, $color_values in $bg-colors {
+@each $color_name in $bg-color-names {
 	/* prettier-ignore */
-	.block-container.bg-#{"" + $bg_color_name}:not(.block-image) + .block-container.bg-#{"" + $bg_color_name} {
+	.block-container.bg-#{"" + $color_name}:not(.block-image) + .block-container.bg-#{"" + $color_name} {
 		.block-inner {
 			padding-top: 0;
 		}
@@ -22,23 +22,19 @@
 	transition: all 1s ease-in-out;
 
 	.block-inner {
-		padding: map-deep-get($block-padding, "small", "top")
-			map-deep-get($block-padding, "small", "right")
-			map-deep-get($block-padding, "small", "bottom")
-			map-deep-get($block-padding, "small", "left");
+		// max-width: var(--global-width);
+		// margin: 0 auto;
+		padding-top: var(--block-padding-sm-top);
+		padding-bottom: var(--block-padding-sm-bottom);
 
 		@include media-min($medium) {
-			padding: map-deep-get($block-padding, "medium", "top")
-				map-deep-get($block-padding, "medium", "right")
-				map-deep-get($block-padding, "medium", "bottom")
-				map-deep-get($block-padding, "medium", "left");
+			padding-top: var(--block-padding-md-top);
+			padding-bottom: var(--block-padding-md-bottom);
 		}
 
 		@include media-min($large) {
-			padding: map-deep-get($block-padding, "large", "top")
-				map-deep-get($block-padding, "large", "right")
-				map-deep-get($block-padding, "large", "bottom")
-				map-deep-get($block-padding, "large", "left");
+			padding-top: var(--block-padding-lg-top);
+			padding-bottom: var(--block-padding-lg-bottom);
 		}
 	}
 

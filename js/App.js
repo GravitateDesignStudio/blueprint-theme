@@ -1,8 +1,6 @@
-// import objectFitImages from 'object-fit-images';
 import ImageBuddy from 'imagebuddy';
 
 import ThemeWelcome from './components/testing/theme-welcome';
-import SiteHeader from './components/site-header';
 import BannerVideo from './components/banner-video';
 import Modal from './components/modal';
 
@@ -20,7 +18,6 @@ class App {
 		this.instances = {
 			components: {
 				themeWelcome: null,
-				siteHeader: null,
 				bannerVideo: null,
 				postsListBlog: [],
 				postsListSearch: []
@@ -58,15 +55,20 @@ class App {
 			ScrollWatcher.defaultCallback(params, 100);
 		});
 
+		// mobile menu button handler
+		const btnMobileMenu = document.querySelector('.site-header__mobile-menu-button');
+
+		if (btnMobileMenu) {
+			btnMobileMenu.addEventListener('click', () => {
+				document.documentElement.classList.toggle('mobile-menu-active');
+			});
+		}
+
 		// initialize ImageBuddy and setup events
 		this.instances.imageBuddy = new ImageBuddy({
 			lazyLoad: true
 			// debug: true
 		});
-
-		// ImageBuddy.on('image-loaded', (imgEl) => {
-		// 	objectFitImages(imgEl);
-		// });
 
 		SiteEvents.subscribe(SiteEventNames.IMAGEBUDDY_TRIGGER_UPDATE, (opts) => {
 			this.instances.imageBuddy.update(opts || {});
@@ -81,10 +83,6 @@ class App {
 				siteHeaderEl.style.marginTop = `${hbEl.offsetHeight}px`;
 			}
 		});
-
-		// // ObjectFitImages: only act upon images that have a valid src attribute
-		// // Note: use the 'object-fit-polyfill' SCSS mixin to create the necessary 'font-family' attribute
-		// objectFitImages('img:not([src^="data:"])');
 	}
 
 	async initComponents() {
@@ -94,13 +92,6 @@ class App {
 
 		if (themeWelcomeEl) {
 			this.instances.themeWelcome = new ThemeWelcome(themeWelcomeEl);
-		}
-
-		// site header
-		const siteHeaderEl = document.querySelector('.site-header');
-
-		if (siteHeaderEl) {
-			this.instances.components.siteHeader = new SiteHeader(siteHeaderEl);
 		}
 
 		// banner cover video

@@ -1,6 +1,6 @@
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12">
-	<h4>Typography</h4>
+<div class="style-testing__row contain wysiwyg">
+	<div>
+		<h4>Typography</h4>
 		<hr>
 
 		<h1>H1: Main Header Cras Justo Odio, Dapibus</h1>
@@ -35,8 +35,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Unordered List</h4>
 		<hr>
 
@@ -52,7 +52,7 @@
 			<li>Aliquam ut arcu et dui feugiat scelerisque eu quis diam.</li>
 		</ul>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Ordered List</h4>
 		<hr>
 
@@ -70,8 +70,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Buttons (primary)</h4>
 		<hr>
 
@@ -79,7 +79,7 @@
 		<a href="#" class="button active">Button (active)</a>
 		<a href="#" class="button disabled" disabled>Button (disabled)</a>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Buttons (secondary)</h4>
 		<hr>
 
@@ -89,8 +89,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Buttons Slim (primary)</h4>
 		<hr>
 
@@ -98,7 +98,7 @@
 		<a href="#" class="button button--slim active">Button (active)</a>
 		<a href="#" class="button button--slim disabled" disabled>Button (disabled)</a>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Buttons Slim (secondary)</h4>
 		<hr>
 
@@ -108,8 +108,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Buttons w/ Icon (primary)</h4>
 		<hr>
 
@@ -135,7 +135,7 @@
 		]);
 		?>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Buttons w/ Icon (secondary)</h4>
 		<hr>
 
@@ -166,8 +166,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12">
+<div class="style-testing__row contain wysiwyg">
+	<div>
 		<h4>Links</h4>
 		<hr>
 
@@ -175,8 +175,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12">
+<div class="style-testing__row contain wysiwyg">
+	<div>
 		<h4>Blockquote</h4>
 		<hr>
 
@@ -187,8 +187,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12">
+<div class="style-testing__row contain wysiwyg">
+	<div>
 		<h4>Table</h4>
 		<hr>
 
@@ -226,15 +226,15 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Text Inputs</h4>
 		<hr>
 
 		<input type="text" placeholder="Inactive">
 		<input type="text" placeholder="Disabled" disabled>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Select</h4>
 		<hr>
 
@@ -252,8 +252,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12 large-6">
+<div class="style-testing__row style-testing__row--two-col contain wysiwyg">
+	<div>
 		<h4>Checkbox</h4>
 		<hr>
 
@@ -269,7 +269,7 @@
 		<input type="checkbox" name="<?php echo esc_attr($check_id); ?>" id="<?php echo esc_attr($check_id); ?>" disabled>
 		<label for="<?php echo esc_attr($check_id); ?>">Checkbox (disabled)</label>
 	</div>
-	<div class="columns small-12 large-6">
+	<div>
 		<h4>Radio Button</h4>
 		<hr>
 
@@ -285,8 +285,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row wysiwyg">
-	<div class="columns small-12">
+<div class="style-testing__row contain wysiwyg">
+	<div>
 		<h4>Textarea</h4>
 		<hr>
 
@@ -294,8 +294,8 @@
 	</div>
 </div>
 
-<div class="row style-testing__row">
-	<div class="columns small-12">
+<div class="style-testing__row contain">
+	<div>
 		<h4>Gravity Forms</h4>
 		<hr>
 
@@ -432,8 +432,8 @@ $icons = WPUtil\SVG::get_svg_list();
 
 if ($icons) {
 	?>
-	<div class="row style-testing__row">
-		<div class="columns small-12">
+	<div class="style-testing__row contain">
+		<div>
 			<h4>Icons</h4>
 			<hr>
 

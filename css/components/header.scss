@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $hamburger-layer-width: 20px;
 $hamburger-layer-height: 2px;
 $hamburger-layer-spacing: 4px;
@@ -7,23 +9,23 @@ html.mobile-menu-active {
 }
 
 .site-header {
-	z-index: $z-header;
+	z-index: var(--z-header);
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: $color-white;
-	box-shadow: 0 0 5px rgba($color-black, 0.4);
-	transition: transform ($default-transition-speed * 2) ease-in-out;
+	background: var(--color-white);
+	box-shadow: 0 0 5px rgba(var(--color-rgb-black), 0.4);
+	transition: transform var(--header-transition-speed) ease-in-out;
 
-	height: $header-height-sm;
+	height: var(--header-height-sm);
 
 	@include media-min($medium) {
-		height: $header-height-md;
+		height: var(--header-height-md);
 	}
 
 	@include media-min($large) {
-		height: $header-height-lg;
+		height: var(--header-height-lg);
 	}
 
 	html.scroll-down & {
@@ -31,11 +33,9 @@ html.mobile-menu-active {
 	}
 
 	&__inner {
-		@include grid-column-gutter;
-
 		position: relative;
 		width: 100%;
-		max-width: $global-width;
+		max-width: var(--global-width);
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
@@ -48,11 +48,11 @@ html.mobile-menu-active {
 
 	&__logo {
 		position: relative;
-		z-index: $z-header + 2;
+		z-index: calc(var(--z-header) + 2);
 	}
 
 	&__mobile-container {
-		z-index: $z-header + 1;
+		z-index: calc(var(--z-header) + 1);
 		display: flex;
 		transition: opacity 0.25s ease-in-out;
 		position: fixed;
@@ -67,7 +67,7 @@ html.mobile-menu-active {
 
 		opacity: 0;
 		pointer-events: none;
-		background: $color-white;
+		background: var(--color-white);
 
 		html.mobile-menu-active & {
 			opacity: 1;
@@ -80,7 +80,7 @@ html.mobile-menu-active {
 	}
 
 	&__menu-container {
-		z-index: $z-header;
+		z-index: var(--z-header);
 		transition: opacity 0.25s ease-in-out;
 
 		position: relative;
@@ -125,7 +125,7 @@ html.mobile-menu-active {
 	}
 
 	&__mobile-menu-button {
-		z-index: $z-header + 2;
+		z-index: calc(var(--z-header) + 2);
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -140,12 +140,16 @@ html.mobile-menu-active {
 		font: inherit;
 		color: inherit;
 		text-transform: none;
-		background: $color-black;
+		background: var(--color-black);
 		border: 0;
 		margin: 0;
 		padding: 0;
 		overflow: visible;
 		min-width: 0;
+
+		@include media-min($large) {
+			display: none;
+		}
 	}
 
 	&__mobile-menu-button-box {
@@ -158,7 +162,7 @@ html.mobile-menu-active {
 	&__mobile-menu-button-inner {
 		display: block;
 		top: 50%;
-		margin-top: $hamburger-layer-height / -2;
+		margin-top: math.div($hamburger-layer-height, -2);
 
 		transition-duration: 0.075s;
 		transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -168,7 +172,7 @@ html.mobile-menu-active {
 		&::after {
 			width: $hamburger-layer-width;
 			height: $hamburger-layer-height;
-			background-color: $color-white;
+			background-color: var(--color-white);
 			position: absolute;
 			transition-property: transform;
 			transition-duration: 0.15s;

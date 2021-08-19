@@ -1,0 +1,25 @@
+.contain {
+	max-width: var(--global-width);
+	margin: 0 auto;
+
+	padding-left: var(--grid-column-gutter);
+	padding-right: var(--grid-column-gutter);
+}
+
+.layout {
+	&__padded-single-col {
+		--grid-num-cols: 12;
+
+		display: grid;
+		grid-template-columns: repeat(var(--grid-num-cols), 1fr);
+		gap: var(--grid-column-gutter);
+
+		> * {
+			grid-column: 1 / span var(--grid-num-cols);
+
+			@include media-min($large) {
+				grid-column: 2 / span calc(var(--grid-num-cols) - 2);
+			}
+		}
+	}
+}

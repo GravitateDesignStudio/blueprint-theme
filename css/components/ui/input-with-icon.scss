@@ -1,7 +1,7 @@
 .input-with-icon {
 	position: relative;
 	width: 100%;
-	height: $default-input-min-height;
+	height: var(--default-input-min-height);
 
 	// NOTE: specificity bump for selector
 	input.input-with-icon__input {
@@ -15,11 +15,11 @@
 
 		padding-right: 32px;
 
-		background-color: $color-white;
-		color: $body-font-color;
+		background-color: var(--color-white);
+		color: var(--body-font-color);
 
 		&:focus {
-			color: $body-font-color;
+			color: var(--body-font-color);
 		}
 	}
 
@@ -39,7 +39,7 @@
 
 		&:hover {
 			.input-with-icon__icon {
-				color: $color-blue;
+				color: var(--color-blue);
 			}
 		}
 	}
@@ -47,9 +47,9 @@
 	&__icon {
 		width: 14px;
 		height: 14px;
-		color: $color-blue;
+		color: var(--color-blue);
 		opacity: 1;
-		transition: all $default-transition-speed $default-transition-easing;
+		transition: all var(--default-transition-speed) var(--default-transition-easing);
 	}
 
 	.ui__spin-loader {
@@ -61,7 +61,7 @@
 		opacity: 0;
 		pointer-events: none;
 		animation-play-state: paused;
-		transition: opacity $default-transition-speed $default-transition-easing;
+		transition: opacity var(--default-transition-speed) var(--default-transition-easing);
 
 		&,
 		&::after {

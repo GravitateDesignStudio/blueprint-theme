@@ -1,69 +1,53 @@
-$form-disabled-opacity: 0.4;
-
-$input-border: 2px solid $color-gray;
-$input-text-color: $body-font-color;
-
-$input-checkbox-radio-size: 16px;
-$input-checked-fill-color: $color-black;
-
 label {
-	font: $body-font;
-	color: $color-black;
+	font: var(--body-font);
+	color: var(--body-font-color);
 }
 
-$input-style-selectors: (
-	'input[type="text"]',
-	'input[type="number"]',
-	'input[type="tel"]',
-	'input[type="url"]',
-	'input[type="email"]',
-	'input[type="password"]',
-	"textarea",
-	"select"
-);
-
-%default-input-styles {
-	transition: all $default-transition-speed ease-out;
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+	transition: all var(--default-transition-speed) ease-out;
 	appearance: none;
-	border-radius: $default-input-border-radius;
-	border: $input-border;
+	border-radius: var(--default-input-border-radius);
+	border: var(--form-control-input-border);
 	padding: 8px 20px 8px 18px;
-	background-color: $color-white;
+	background-color: var(--color-white);
 	min-height: 36px;
-	font: $body-font;
-	color: $input-text-color;
+	font: var(--body-font);
+	color: var(--color-black);
 	display: block;
 	width: 100%;
 
 	&::placeholder {
-		color: $color-gray;
+		color: var(--color-gray);
 	}
 
 	@include media-min($medium) {
 		display: inline-block;
 		width: auto;
 		padding: 10px 20px 12px 18px;
-		min-height: $default-input-min-height;
+		min-height: var(--default-input-min-height);
 	}
 
 	@include media-min($large) {
 		padding: 0.8rem 2rem;
-		min-height: $default-input-min-height;
+		min-height: var(--default-input-min-height);
 	}
 
 	&:focus {
-		border-radius: $default-input-border-radius;
-		border: 2px solid $color-black;
-		color: $body-font-color;
+		border-radius: var(--default-input-border-radius);
+		border: 2px solid var(--color-black);
+		color: var(--color-black);
 	}
 
 	&:disabled {
-		opacity: $form-disabled-opacity;
+		opacity: var(--form-control-disabled-opacity);
 	}
-}
-
-@include classes-from-list($input-style-selectors) {
-	@extend %default-input-styles;
 }
 
 input[type="text"],
@@ -82,10 +66,10 @@ select:focus {
 	background-repeat: no-repeat;
 	background-position: calc(100% - 10px) 50%;
 	padding-right: 35px;
-	color: $text-dark;
+	color: var(--color-black);
 
 	&:disabled {
-		opacity: $form-disabled-opacity;
+		opacity: var(--form-control-disabled-opacity);
 	}
 
 	&[multiple] {
@@ -98,7 +82,7 @@ select::-ms-expand {
 }
 
 select option {
-	color: $text-dark;
+	color: var(--color-black);
 }
 
 input[type="checkbox"],
@@ -119,16 +103,15 @@ input[type="radio"] {
 		}
 
 		&::before {
-			width: $input-checkbox-radio-size;
-			height: $input-checkbox-radio-size;
-			// border: 1px solid $color-gray;
-			border: $input-border;
+			width: var(--form-checkbox-radio-size);
+			height: var(--form-checkbox-radio-size);
+			border: var(--form-control-input-border);
 			background: transparent;
 		}
 
 		&::after {
 			opacity: 0;
-			transition: opacity $default-transition-speed ease-in;
+			transition: opacity var(--default-transition-speed) ease-in;
 		}
 
 		+ input[type="checkbox"],
@@ -146,7 +129,7 @@ input[type="radio"] {
 	}
 
 	&:disabled + label {
-		opacity: $form-disabled-opacity;
+		opacity: var(--form-control-disabled-opacity);
 	}
 }
 
@@ -163,12 +146,9 @@ input[type="checkbox"] {
 			transform: translateY(-50%);
 			top: 50%;
 			left: 3px;
-			// width: #{$input-checkbox-radio-size - 8px};
 			width: 10px;
-			// height: #{$input-checkbox-radio-size - 8px};
 			height: 8px;
-			// background: $input-checked-fill-color;
-			background-image: url("#{$theme-url-base}/media/images/check-blue.png");
+			background-image: var(--form-checkmark-img);
 		}
 	}
 }
@@ -187,34 +167,10 @@ input[type="radio"] {
 			transform: translateY(-50%);
 			top: 50%;
 			left: 5px;
-			width: #{$input-checkbox-radio-size - 10px};
-			height: #{$input-checkbox-radio-size - 10px};
+			width: calc(var(--form-checkbox-radio-size) - 10px);
+			height: calc(var(--form-checkbox-radio-size) - 10px);
 			border-radius: 100%;
-			background: $input-checked-fill-color;
-		}
-	}
-}
-
-@include dark-bg("", "") {
-	@include classes-from-list($input-style-selectors) {
-		border-color: $color-white;
-		background-color: $color-white;
-		color: $input-text-color;
-	}
-
-	input[type="checkbox"] {
-		+ label {
-			&::after {
-				background-image: url("#{$theme-url-base}/media/images/check-white.png");
-			}
-		}
-	}
-
-	input[type="radio"] {
-		+ label {
-			&::after {
-				background: $color-white;
-			}
+			background: var(--form-radio-fill-color);
 		}
 	}
 }

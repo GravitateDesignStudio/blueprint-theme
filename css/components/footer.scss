@@ -1,6 +1,30 @@
 .site-footer {
 	padding: 4rem 0;
 
+	a {
+		color: var(--color-white);
+		text-decoration: none;
+	}
+
+	&__inner {
+		display: grid;
+
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"links"
+			"social"
+			"legal";
+		gap: var(--grid-column-gutter);
+
+		@include media-min($medium) {
+			grid-template-columns: 1fr auto;
+			grid-template-areas:
+				"links social"
+				"links social"
+				"legal legal";
+		}
+	}
+
 	&__menu {
 		ul {
 			display: flex;
@@ -15,6 +39,8 @@
 		}
 
 		&--primary {
+			grid-area: links;
+
 			ul {
 				flex-direction: column;
 			}
@@ -28,19 +54,25 @@
 	}
 
 	&__social-links {
+		grid-area: social;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
+		gap: 1rem;
 		list-style: none;
+
+		@include media-min($medium) {
+			flex-direction: column;
+			justify-content: flex-start;
+		}
 	}
 
 	&__social-link {
 		display: inline-block;
 		width: 32px;
 		height: 32px;
-		margin-right: 1rem;
+	}
 
-		&:last-child {
-			margin-right: 0;
-		}
+	&__legal {
+		grid-area: legal;
 	}
 }

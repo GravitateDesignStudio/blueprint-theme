@@ -6,7 +6,7 @@ class PostsListBlog extends PostsList {
 		super(el);
 
 		this.setEndpoint('wp/v2/posts');
-		this.setCardContainerClasses('columns small-12 medium-6 large-3');
+		this.setPostDisplayCallback((cardMarkup) => cardMarkup);
 
 		this.formSearchEl = this.el.querySelector('form#form_filter_search');
 		this.filterCategoryEl = this.el.querySelector('select#filter_category');

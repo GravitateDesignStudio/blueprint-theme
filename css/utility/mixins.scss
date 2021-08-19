@@ -14,44 +14,6 @@
 	height: 100%;
 }
 
-@mixin classes-from-list($list, $prepend: "", $append: "") {
-	#{generate-selector-string($list, $prepend, $append)} {
-		@content;
-	}
-}
-
-@mixin dark-bg($prepend: "", $append: " &") {
-	@include classes-from-list($bg-colors-with-light-text-classes, $prepend, $append) {
-		@content;
-	}
-}
-
-@mixin stacked-column-spacing($spacing-small: 6rem, $spacing-medium: 6rem, $spacing-large: 6rem) {
-	.columns.small-12 + .columns {
-		margin-top: $spacing-small;
-	}
-
-	@include media-min($medium) {
-		.columns.small-12 + .columns {
-			margin-top: 0;
-		}
-
-		.columns.medium-12 + .columns {
-			margin-top: $spacing-medium;
-		}
-	}
-
-	@include media-min($large) {
-		.columns.medium-12 + .columns {
-			margin-top: 0;
-		}
-
-		.columns.large-12 + .columns {
-			margin-top: $spacing-large;
-		}
-	}
-}
-
 @mixin media($args...) {
 	$media-type: "only screen";
 	$media-type-key: "media-type";
@@ -87,40 +49,5 @@
 @mixin media-min($min) {
 	@include media($min-width: $min) {
 		@content;
-	}
-}
-
-@mixin anchor-link-colors($normal-color, $hover-color) {
-	color: $normal-color;
-
-	&:hover,
-	&:active {
-		color: $hover-color;
-	}
-}
-
-@mixin button-colors($color-values: ()) {
-	$color-values: map-merge(
-		(
-			"default-background-color": $color-blue,
-			"default-border-color": $color-blue,
-			"default-text-color": $color-black,
-			"hover-background-color": darken($color-blue, 10%),
-			"hover-border-color": darken($color-blue, 10%),
-			"hover-text-color": $color-white
-		),
-		$color-values
-	);
-
-	background-color: map-get($color-values, "default-background-color");
-	color: map-get($color-values, "default-text-color");
-	border-color: map-get($color-values, "default-border-color");
-
-	&:hover,
-	&:active,
-	&.active {
-		background-color: map-get($color-values, "hover-background-color");
-		color: map-get($color-values, "hover-text-color");
-		border-color: map-get($color-values, "hover-border-color");
 	}
 }
