@@ -14,19 +14,10 @@ html.mobile-menu-active {
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: var(--header-height);
 	background: var(--color-white);
 	box-shadow: 0 0 5px rgba(var(--color-rgb-black), 0.4);
 	transition: transform var(--header-transition-speed) ease-in-out;
-
-	height: var(--header-height-sm);
-
-	@include media-min($medium) {
-		height: var(--header-height-md);
-	}
-
-	@include media-min($large) {
-		height: var(--header-height-lg);
-	}
 
 	html.scroll-down & {
 		transform: translateY(-105%);

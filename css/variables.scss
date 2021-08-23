@@ -66,9 +66,16 @@ $following-el-margin-top: (
 	/*************************************
 	Header
 	**************************************/
-	--header-height-sm: 60px;
-	--header-height-md: 70px;
-	--header-height-lg: 80px;
+	--header-height: 60px;
+
+	@include media-min($medium) {
+		--header-height: 70px;
+	}
+
+	@include media-min($large) {
+		--header-height: 80px;
+	}
+
 	--header-transition-speed: calc(var(--default-transition-speed) * 2);
 
 	/*************************************
