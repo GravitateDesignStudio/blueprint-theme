@@ -6,7 +6,7 @@ $slug = $name;
 
 register_post_type(
 	$name,
-	array(
+	[
 		'label' => $plural_label,
 		'description' => '',
 		'public' => true,
@@ -17,14 +17,14 @@ register_post_type(
 		'capability_type' => 'page',
 		'map_meta_cap' => true,
 		'hierarchical' => false,
-		'rewrite' => array('with_front' => false, 'slug' => $slug),
+		'rewrite' => ['with_front' => false, 'slug' => $slug],
 		'query_var' => true,
 		'exclude_from_search' => false,
 		'can_export' => true,
 		'has_archive' => true,
 		'menu_icon' => 'dashicons-portfolio',
-		'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-		'labels' => array(
+		'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
+		'labels' => [
 			'name' => $plural_label,
 			'singular_name' => $single_label,
 			'menu_name' => $plural_label,
@@ -39,6 +39,6 @@ register_post_type(
 			'not_found' => 'No ' . $plural_label . ' Found',
 			'not_found_in_trash' => 'No ' . $plural_label . ' Found in Trash',
 			'parent' => 'Parent ' . $single_label,
-		)
-	)
+		]
+	]
 );

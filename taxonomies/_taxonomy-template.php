@@ -6,10 +6,14 @@ $slug = $name;
 
 register_taxonomy(
 	$slug,
-	array('post', 'page'),
-	array(
+	['post', 'page'],
+	[
 		'hierarchical' => true,
+		'public' => true,
 		'show_ui' => true,
+		'show_in_quick_edit' => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => true,
 		'show_in_rest' => true,
 		'query_var' => true,
 		'labels' => array(
@@ -24,5 +28,5 @@ register_taxonomy(
 			'add_new_item' => 'Add New ' . $single_label,
 			'new_item_name' => 'New ' . $single_label . ' Name'
 		)
-	)
+	]
 );
