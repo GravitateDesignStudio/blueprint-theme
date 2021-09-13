@@ -60,6 +60,7 @@
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket"/>
 
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis"/>
 		<exclude name="Squiz.Commenting.BlockComment.NoCapital"/>
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
