@@ -14,11 +14,72 @@ add_filter('grav_blocks_output_default_styles', function () {
 });
 
 /**
+ * Override values for Blueprint Blocks plugin settings
+ */
+add_filter('grav_blocks_plugin_settings', function ($settings, $option_key) {
+	// All default blocks should be disabled
+	$settings['blocks_enabled_default'] = [];
+
+	// All theme blocks should be enabled
+	$settings['blocks_enabled_theme'] = WPUtil\Vendor\BlueprintBlocks::get_theme_blocks_list();
+
+	// Specify which post types the blocks editor should be visible on
+	$settings['post_types'] = [
+		ClientNamespace\Constants\CPT::BLOG,
+		'page',
+		'global-block'
+	];
+
+	// Specify which page templates the blocks editor should be visible on
+	$settings['templates'] = [
+		// ex: 'templates/page-template-name.php'
+	];
+
+	// Specify which taxonomies the blocks editor should be visible on
+	$settings['taxonomies'] = [];
+
+	// Specify which advanced options are enabled. This array may contain the
+	// following strings: filter_content, filter_excerpt, after_title, hide_content
+	$settings['advanced_options'] = [];
+
+	return $settings;
+}, 10, 2);
+
+/**
+ * Remove unused Blueprint Blocks plugin settings fields
+ */
+add_filter('grav_blocks_settings_fields', function ($fields, $location) {
+	// Remove the fields for enabling/disabling individual blocks
+	unset($fields['blocks_enabled_default']);
+	unset($fields['blocks_enabled_theme']);
+
+	// Remove the fields for enabling/disabling blocks on post types
+	unset($fields['post_types']);
+
+	// Remove the fields for enabling/disabling blocks on page templates
+	unset($fields['templates']);
+
+	// Remove the fields for enabling/disabling blocks on taxonomies
+	unset($fields['taxonomies']);
+
+	// The Google Maps fields used within this theme are located under "Theme Settings / Integrations / Google Maps".
+	unset($fields['google_maps_api_key']);
+	unset($fields['google_maps_styles']);
+	unset($fields['google_maps_default_lat_lng']);
+	unset($fields['google_maps_default_zoom']);
+
+	// Remove the "Advanced / Advanced Options" fields
+	unset($fields['advanced_options']);
+
+	return $fields;
+}, 10, 2);
+
+/**
  * Enforce background color choices
  */
 WPUtil\Vendor\BlueprintBlocks::enforce_background_colors([
 	'block-bg-none' => 'None',
-	'block-bg-image' => 'Image',
+	// 'block-bg-image' => 'Image',
 	'bg-white' => 'White',
 	'bg-black' => 'Black',
 	'bg-blue' => 'Blue',
@@ -27,14 +88,16 @@ WPUtil\Vendor\BlueprintBlocks::enforce_background_colors([
 ]);
 
 /**
+ * Only allow specific background colors for the specified blocks
+ */
+WPUtil\Vendor\BlueprintBlocks::restrict_backgrounds_for_blocks([
+	// ex: 'block_name' => ['block-bg-none', 'bg-gray']
+]);
+
+/**
  * Enforce which blocks are allowed to use the animate functionality
  */
 WPUtil\Vendor\BlueprintBlocks::allow_animate_option_for_blocks([]);
-
-/**
- * Hide unused default blocks from the blocks admin panel
- */
-WPUtil\Vendor\BlueprintBlocks::hide_unused_blocks([]);
 
 /**
  * Make sure blocks appear in alphabetical order by label in the flexible content field
