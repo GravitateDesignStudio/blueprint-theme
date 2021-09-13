@@ -1,5 +1,5 @@
 <?php
-use ClientNamespace\Constants;
+use ClientNamespace\{ Components, Constants };
 
 get_header();
 
@@ -10,7 +10,7 @@ if (!$title) {
 	$title = '404 - Not Found';
 }
 
-WPUtil\Component::render('components/banners/banner-default', [
+WPUtil\Component::render(Components\Banners\BannerDefault::class, [
 	'title' => $title
 ]);
 
@@ -21,7 +21,7 @@ WPUtil\Component::render('components/banners/banner-default', [
 	{
 		?>
 		<section class="block-container">
-			<div class="block-inner contain layout__padded-single-col wysiwyg">
+			<div class="block-inner contain layout__padded-columns wysiwyg">
 				<div class="tmpl-404__content">
 					<?php
 					// phpcs:ignore

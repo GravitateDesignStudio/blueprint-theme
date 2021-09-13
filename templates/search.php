@@ -1,7 +1,10 @@
 <?php
+use ClientNamespace\{ Components, Constants };
+use WPUtil\{ Component, Vendor };
+
 get_header();
 
-WPUtil\Component::render('components/banners/banner-default', [
+Component::render(Components\Banners\BannerDefault::class, [
 	'title' => 'Search Results'
 ]);
 
@@ -10,15 +13,15 @@ WPUtil\Component::render('components/banners/banner-default', [
 	<?php
 	global $wp_query;
 
-	WPUtil\Component::render('components/posts-list/posts-list-search', [
+	Component::render(Components\PostsList\PostsListSearch::class, [
 		'wp_query_obj' => $wp_query
 	]);
 	?>
 </main>
 <?php
 
-WPUtil\Vendor\BlueprintBlocks::safe_display([
-	'section' => ClientNamespace\Constants\ACF::THEME_OPTIONS_SEARCH_BASE . '_search_archive_blocks_grav_blocks',
+Vendor\BlueprintBlocks::safe_display([
+	'section' => Constants\ACF::THEME_OPTIONS_SEARCH_BASE . '_search_archive_blocks_grav_blocks',
 	'object' => 'option'
 ]);
 

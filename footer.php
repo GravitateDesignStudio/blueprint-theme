@@ -1,7 +1,7 @@
 <?php
-use ClientNamespace\Constants;
+use ClientNamespace\{ Components, Constants };
 
-WPUtil\Component::render('components/footer');
+WPUtil\Component::render(Components\Footer::class);
 
 wp_footer();
 

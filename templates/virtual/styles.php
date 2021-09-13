@@ -1,7 +1,10 @@
 <?php
+use ClientNamespace\Components;
+use WPUtil\Component;
+
 get_header();
 
-WPUtil\Component::render('components/banners/banner-default', [
+Component::render(Components\Banners\BannerDefault::class, [
 	'title' => 'Styles'
 ]);
 
@@ -23,7 +26,7 @@ $backgrounds = $backgrounds ? array_filter($backgrounds, function ($key) {
 	});
 </script>
 <div id="style-testing__content" class="wysiwyg">
-	<?php WPUtil\Component::render('components/testing/style-testing'); ?>
+	<?php Component::render(Components\Testing\StyleTesting::class); ?>
 </div>
 <div class="style-testing__color-selector">
 	<div class="contain">

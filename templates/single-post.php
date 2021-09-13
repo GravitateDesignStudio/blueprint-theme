@@ -1,7 +1,9 @@
 <?php
-get_header();
+use ClientNamespace\{ Components, Constants, Posts };
+use Blueprint\Images;
+use WPUtil\{ Component, Vendor };
 
-// WPUtil\Component::render('components/banners/banner-default');
+get_header();
 
 ?>
 <main class="tmpl-single-post">
@@ -12,7 +14,7 @@ get_header();
 		{
 			the_post();
 
-			$featured_image = ClientNamespace\Posts::getFeaturedImageACFObject(get_the_ID());
+			$featured_image = Posts::getFeaturedImageACFObject(get_the_ID());
 
 			?>
 			<div class="contain tmpl-single-post__container">
@@ -21,7 +23,7 @@ get_header();
 					<?php
 					if ($featured_image)
 					{
-						echo Blueprint\Images::safe_image_output($featured_image, ['class' => 'tmpl-single-post__featured-image']);
+						echo Images::safe_image_output($featured_image, ['class' => 'tmpl-single-post__featured-image']);
 					}
 					?>
 					<span class="tmpl-single-post__post-author">by <?php the_author(); ?></span>
@@ -33,13 +35,12 @@ get_header();
 				<div class="tmpl-single-post__share-icons">
 					<div class="tmpl-single-post__share-icons-inner">
 						<?php
-						WPUtil\Component::render('components/ui/share-icon', [
-							'site' => 'twitter',
-							'twitter_username' => 'test_username'
+						Component::render(Components\UI\ShareIcon::class, [
+							'site' => 'Twitter'
 						]);
 
-						WPUtil\Component::render('components/ui/share-icon', [
-							'site' => 'facebook'
+						Component::render(Components\UI\ShareIcon::class, [
+							'site' => 'Facebook'
 						]);
 						?>
 					</div>
@@ -47,11 +48,11 @@ get_header();
 			</div>
 			<?php
 
-			WPUtil\Vendor\BlueprintBlocks::safe_display();
+			Vendor\BlueprintBlocks::safe_display();
 		}
 
-		WPUtil\Vendor\BlueprintBlocks::safe_display([
-			'section' => ClientNamespace\Constants\ACF::BLOG_SETTINGS_BASE . '_blog_post_blocks_grav_blocks',
+		Vendor\BlueprintBlocks::safe_display([
+			'section' => Constants\ACF::BLOG_SETTINGS_BASE . '_blog_post_blocks_grav_blocks',
 			'object' => 'option'
 		]);
 	}

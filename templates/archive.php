@@ -1,8 +1,12 @@
 <?php
+use ClientNamespace\Components;
+use Blueprint\Archives;
+use WPUtil\Component;
+
 get_header();
 
-WPUtil\Component::render('components/banners/banner-default', [
-	'title' => Blueprint\Archives::get_title()
+Component::render(Components\Banners\BannerDefault::class, [
+	'title' => Archives::get_title()
 ]);
 
 ?>
@@ -17,18 +21,18 @@ WPUtil\Component::render('components/banners/banner-default', [
 			{
 				the_post();
 
-				WPUtil\Component::render('components/cards/card-search');
+				Component::render(Components\Cards\CardSearch::class);
 			}
 			?>
 		</div>
 		<?php
 
-		WPUtil\Component::render('components/archive/navigation');
+		Component::render(Components\Archive\Navigation::class);
 	}
 	else
 	{
 		?>
-		<div class="contain layout__padded-single-col">
+		<div class="contain layout__padded-columns">
 			<p>No posts were found</p>
 		</div>
 		<?php

@@ -1,20 +1,25 @@
 <?php
+use ClientNamespace\Components;
+use WPUtil\{ Component, Vendor };
+
 get_header();
 
-WPUtil\Component::render('components/banners/banner-default', [
+Component::render(Components\Banners\BannerDefault::class, [
 	'title' => 'Gravitate WordPress Theme'
 ]);
 
 ?>
 <main class="tmpl-front-page">
 	<?php
-	WPUtil\Component::render('components/testing/theme-welcome');
+	Component::render(Components\Testing\ThemeWelcome::class);
 
-	if (have_posts()) {
-		while (have_posts()) {
+	if (have_posts())
+	{
+		while (have_posts())
+		{
 			the_post();
 
-			WPUtil\Vendor\BlueprintBlocks::safe_display();
+			Vendor\BlueprintBlocks::safe_display();
 		}
 	}
 	?>

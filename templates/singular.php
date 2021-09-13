@@ -1,7 +1,10 @@
 <?php
+use ClientNamespace\Components;
+use WPUtil\{ Component, Vendor };
+
 get_header();
 
-WPUtil\Component::render('components/banners/banner-default');
+Component::render(Components\Banners\BannerDefault::class);
 
 ?>
 <main class="tmpl-singular tmpl-singular--<?php echo esc_attr(get_post_type()); ?>">
@@ -15,7 +18,7 @@ WPUtil\Component::render('components/banners/banner-default');
 			if (get_the_content())
 			{
 				?>
-				<section class="contain layout__padded-single-col">
+				<section class="contain layout__padded-columns">
 					<div class="tmpl-singular__content wysiwyg">
 						<?php the_content(); ?>
 					</div>
@@ -23,7 +26,7 @@ WPUtil\Component::render('components/banners/banner-default');
 				<?php
 			}
 
-			WPUtil\Vendor\BlueprintBlocks::safe_display();
+			Vendor\BlueprintBlocks::safe_display();
 		}
 	}
 	?>

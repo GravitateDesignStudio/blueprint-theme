@@ -1,9 +1,12 @@
 <?php
+use ClientNamespace\{ Components, Constants };
+use WPUtil\{ Component, Vendor };
+
 get_header();
 
 $blog_page_id = get_option('page_for_posts');
 
-WPUtil\Component::render('components/banners/banner-default', [
+Component::render(Components\Banners\BannerDefault::class, [
 	'title' => get_the_title($blog_page_id),
 	'post_id' => $blog_page_id
 ]);
@@ -13,15 +16,15 @@ WPUtil\Component::render('components/banners/banner-default', [
 	<?php
 	global $wp_query;
 
-	WPUtil\Component::render('components/posts-list/posts-list-blog', [
+	Component::render(Components\PostsList\PostsListBlog::class, [
 		'wp_query_obj' => $wp_query
 	]);
 	?>
 </main>
 <?php
 
-WPUtil\Vendor\BlueprintBlocks::safe_display([
-	'section' => ClientNamespace\Constants\ACF::BLOG_SETTINGS_BASE . '_blog_archive_blocks_grav_blocks',
+Vendor\BlueprintBlocks::safe_display([
+	'section' => Constants\ACF::BLOG_SETTINGS_BASE . '_blog_archive_blocks_grav_blocks',
 	'object' => 'option'
 ]);
 

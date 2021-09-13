@@ -1,5 +1,5 @@
 <?php
-use ClientNamespace\Constants;
+use ClientNamespace\{ Components, Constants };
 
 ?>
 <!doctype html>
@@ -36,4 +36,4 @@ use ClientNamespace\Constants;
 		the_field(Constants\ACF::THEME_OPTIONS_SCRIPTS_BASE . '_global_body_top_content', 'option', false);
 	}
 
-	WPUtil\Component::render('components/header');
+	WPUtil\Component::render(Components\Header::class);
