@@ -1,0 +1,32 @@
+.play-video-overlay {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	&__play-circle {
+		position: absolute;
+		bottom: 30px;
+		left: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 76px;
+		height: 76px;
+		border-radius: 100%;
+		background-color: var(--color-white);
+	}
+
+	&__play-icon {
+		height: 24px;
+		color: var(--color-blue);
+		transform: translateX(4px);
+		transition: color var(--default-transition-params);
+
+		.play-video-overlay:hover & {
+			color: var(--color-blue-dark);
+		}
+	}
+}

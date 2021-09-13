@@ -108,7 +108,12 @@ WPUtil\Vendor\BlueprintBlocks::sort_block_names_alphabetically();
  * Ensure Grav Blocks are viewable on the pages that require them
  */
 add_filter('grav_is_viewable', function ($is_viewable) {
-	if (is_home() || is_singular() || is_404() || is_search()) {
+	if (
+		is_home() ||
+		is_singular() ||
+		is_404() ||
+		is_search()
+	) {
 		$is_viewable = true;
 	}
 
@@ -142,4 +147,11 @@ add_action('rest_api_init', function () {
  */
 add_filter('grav_blocks_process_video_url', function ($process_video, $url) {
 	return false;
+}, 10, 2);
+
+/**
+ * Output the video button markup when requested
+ */
+add_action('grav_blocks_get_video_link_button', function ($block, $video_url) {
+	WPUtil\Component::render(ClientNamespace\Components\UI\PlayVideoOverlay::class);
 }, 10, 2);
