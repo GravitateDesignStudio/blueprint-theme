@@ -36,3 +36,4 @@ require_once 'bootstrap/api.php';
 require_once 'bootstrap/hello-bar.php';
 require_once 'bootstrap/virtual-pages.php';
 require_once 'bootstrap/pre-get-posts.php';
+require_once 'bootstrap/editor-settings.php';
