@@ -65,7 +65,7 @@ class BannerBackground implements IComponent
 			)
 		);
 
-		if ($this->background_image === 'image') {
+		if ($this->background_type === 'image') {
 			$this->background_image = $params['background_image'] ?? ACF::get_field_array($this->acf_prefix . '_background_image', $this->post_id);
 
 			if (!$this->background_image) {
