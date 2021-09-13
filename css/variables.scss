@@ -112,6 +112,8 @@ $following-el-margin-top: (
 
 	--color-rgb-black: 0, 0, 0;
 	--color-rgb-white: 255, 255, 255;
+	--color-rgb-blue: 20, 92, 161;
+	--color-rgb-blue-dark: 14, 66, 116;
 
 	--error-text: var(--color-red);
 
@@ -189,8 +191,8 @@ $following-el-margin-top: (
 	--h5-color: var(--body-font-color);
 	--h6-color: var(--body-font-color);
 
-	--anchor-link-normal-color: var(--color-blue);
-	--anchor-link-hover-color: var(--color-blue-dark);
+	--anchor-link-normal-rgb-color: var(--color-rgb-blue);
+	--anchor-link-hover-rgb-color: var(--color-rgb-blue-dark);
 
 	/*************************************
 	Forms

@@ -1,14 +1,16 @@
 .wysiwyg {
-	a:not(.button) {
-		color: var(--anchor-link-normal-color);
-		text-decoration: none;
+	a:not(.button):not(.ignore-link-styles) {
+		color: rgb(var(--anchor-link-normal-rgb-color));
+		text-decoration: underline;
+		text-decoration-color: rgba(var(--anchor-link-hover-rgb-color), 0);
+		text-underline-offset: 2px;
 		font-weight: var(--font-weight-semibold);
-		transition: color var(--default-transition-speed) ease-in-out;
+		transition: all var(--default-transition-speed) ease-in-out;
 
 		&:hover,
 		&:active {
-			color: var(--anchor-link-hover-color);
-			text-decoration: underline;
+			color: rgb(var(--anchor-link-hover-rgb-color));
+			text-decoration-color: rgba(var(--anchor-link-hover-rgb-color), 1);
 		}
 	}
 

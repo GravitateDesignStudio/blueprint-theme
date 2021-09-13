@@ -31,8 +31,8 @@
 .bg-black,
 .bg-blue,
 .bg-red {
-	--anchor-link-normal-color: var(--color-white);
-	--anchor-link-hover-color: var(--color-white);
+	--anchor-link-normal-rgb-color: var(--color-rgb-white);
+	--anchor-link-hover-rgb-color: var(--color-rgb-white);
 }
 
 .bg-black {
