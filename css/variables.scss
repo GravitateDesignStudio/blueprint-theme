@@ -54,7 +54,10 @@ $following-el-margin-top: (
 	--default-input-min-height: 40px;
 	--default-transition-speed: 0.2s;
 	--default-transition-easing: ease-in-out;
+	--default-transition-params: var(--default-transition-speed) var(--default-transition-easing);
 	--default-box-shadow: 0 10px 10px -10px rgba(var(--color-rgb-black), 0.5);
+	--default-input-border-radius: var(--default-border-radius);
+	--default-input-min-height: 48px;
 
 	/*************************************
 	z-index
@@ -81,10 +84,20 @@ $following-el-margin-top: (
 	/*************************************
 	Layout
 	**************************************/
+	--container-margin: 1.6rem;
+	--container-max-width: calc(100vw - calc(var(--container-margin) * 2));
 	--grid-column-gutter: 3rem;
 
 	@include media-min($medium) {
 		--grid-column-gutter: 4rem;
+	}
+
+	@include media-min($large) {
+		--container-margin: 7rem;
+	}
+
+	@include media-min($global-width) {
+		--container-max-width: calc(var(--global-width) - calc(var(--container-margin) * 2));
 	}
 
 	/*************************************
@@ -182,10 +195,28 @@ $following-el-margin-top: (
 	/*************************************
 	Forms
 	**************************************/
+	--color-input-border: #979797;
+
+	--form-label-color: var(--color-blue-dark);
 	--form-checkbox-radio-size: 16px;
-	--form-checkmark-img: url("#{$theme-url-base}/media/images/check-blue.png");
+	--form-checkbox-check-img: url("#{$theme-url-base}/media/images/check-blue.png");
 	--form-radio-fill-color: var(--color-black);
 
-	--form-control-input-border: 2px solid var(--color-gray);
+	--form-control-border-color-default: var(--color-input-border);
+	--form-control-border-color-focus: var(--color-blue);
 	--form-control-disabled-opacity: 0.4;
+	--form-control-padding: 8px 20px 8px 18px;
+
+	@include media-min($medium) {
+		--form-control-padding: 10px 20px 12px 18px;
+	}
+
+	@include media-min($large) {
+		--form-control-padding: 0.8rem 1.5rem;
+	}
+
+	/*************************************
+	Misc.
+	**************************************/
+	--list-bullet-color: var(--color-black);
 }
