@@ -61,7 +61,7 @@
 		"stylelint-config-sass-guidelines": "^8.0.0",
 		"webpack": "^5.10.3",
 		"webpack-cli": "^4.2.0",
-		"webpack-stream": "^6.1.1"
+		"webpack-stream": "^7.0.0"
 	},
 	"bundlerOptions": {
 		"babel": true
