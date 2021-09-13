@@ -1,8 +1,7 @@
 <?php
 $single_label = 'TaxonomyTemplate';
 $plural_label = 'TaxonomyTemplates';
-$name = strtolower(sanitize_title($single_label));
-$slug = $name;
+$slug = '';
 
 register_taxonomy(
 	$slug,
@@ -16,7 +15,7 @@ register_taxonomy(
 		'show_in_nav_menus' => true,
 		'show_in_rest' => true,
 		'query_var' => true,
-		'labels' => array(
+		'labels' => [
 			'name' => $plural_label,
 			'singular_name' => $single_label,
 			'search_items' => 'Search ' . $plural_label,
@@ -27,6 +26,6 @@ register_taxonomy(
 			'update_item' => 'Update ' . $single_label,
 			'add_new_item' => 'Add New ' . $single_label,
 			'new_item_name' => 'New ' . $single_label . ' Name'
-		)
+		]
 	]
 );
