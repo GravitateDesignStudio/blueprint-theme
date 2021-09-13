@@ -38,7 +38,7 @@ class PostsListBlog implements IComponent
 
 	public function __construct(array $params)
 	{
-		$this->wp_query_obj = isset($params['wp_query_obj']) && is_a($params['wp_query_object'], 'WP_Query') ? $params['wp_query_object'] : null;
+		$this->wp_query_obj = isset($params['wp_query_obj']) && is_a($params['wp_query_obj'], 'WP_Query') ? $params['wp_query_obj'] : null;
 		$this->block_display = Arrays::get_value_as_bool($params, 'block_display');
 		$this->current_page = Arrays::get_value_as_int($params, 'current_page', 1);
 		$this->no_results_message = Arrays::get_value_as_string($params, 'no_results_message', function () {

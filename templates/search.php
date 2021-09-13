@@ -5,6 +5,7 @@ use WPUtil\{ Component, Vendor };
 get_header();
 
 Component::render(Components\Banners\BannerDefault::class, [
+	'post_id' => 0,
 	'title' => 'Search Results'
 ]);
 

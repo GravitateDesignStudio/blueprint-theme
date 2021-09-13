@@ -1,4 +1,6 @@
 <?php
+use ClientNamespace\{ Components, Constants, CPT };
+
 // TODO: register custom endpoints for this theme using the WPUtil\REST::register_routes method
 // \WPUtil\REST::register_routes('client-name/v1', array(
 // '/endpoint' => 'ClientName\API\v1\Endpoint'
@@ -12,11 +14,11 @@ add_action('rest_api_init', function () {
 	register_rest_field('post', 'card_markup', array(
 		'get_callback' => function ($post) {
 			return WPUtil\Component::render_to_string(
-				'components/cards/card-blog',
+				Components\Cards\CardBlog::class,
 				[
 					'post_id' => $post['id'],
-					'category' => ClientNamespace\CPT\Blog::getPostCategoryText($post['id']),
-					'default_image' => ClientNamespace\CPT\Blog::getDefaultCardImage()
+					'category' => CPT\Blog::getPostCategoryText($post['id']),
+					'default_image' => CPT\Blog::getDefaultCardImage()
 				]
 			);
 		}
@@ -33,7 +35,7 @@ add_action('rest_api_init', function () {
 
 		foreach ($result->data as &$record) {
 			$record['card_markup'] = WPUtil\Component::render_to_string(
-				'components/cards/card-search',
+				Components\Cards\CardSearch::class,
 				[ 'post_id' => $record['id'] ]
 			);
 		}
@@ -44,13 +46,13 @@ add_action('rest_api_init', function () {
 	/**
 	 * Add filters to blog (post) queries from the "load more" requests
 	 */
-	add_filter('rest_' . ClientNamespace\Constants\CPT::BLOG . '_query', function ($args, $request) {
-		$args['posts_per_page'] = ClientNamespace\CPT\Blog::getPostsPerPageCount();
+	add_filter('rest_' . Constants\CPT::BLOG . '_query', function ($args, $request) {
+		$args['posts_per_page'] = CPT\Blog::getPostsPerPageCount();
 
-		$args = ClientNamespace\CPT\Blog::modifyQueryWithFilters($args, [
-			'category' => $request->get_param(ClientNamespace\Constants\QueryParams::BLOG_ARCHIVE_FILTER_CATEGORY) ?? '',
-			'tag' => $request->get_param(ClientNamespace\Constants\QueryParams::BLOG_ARCHIVE_FILTER_TAG) ?? '',
-			'search' => $request->get_param(ClientNamespace\Constants\QueryParams::BLOG_ARCHIVE_FILTER_SEARCH) ?? ''
+		$args = CPT\Blog::modifyQueryWithFilters($args, [
+			'category' => $request->get_param(Constants\QueryParams::BLOG_ARCHIVE_FILTER_CATEGORY) ?? '',
+			'tag' => $request->get_param(Constants\QueryParams::BLOG_ARCHIVE_FILTER_TAG) ?? '',
+			'search' => $request->get_param(Constants\QueryParams::BLOG_ARCHIVE_FILTER_SEARCH) ?? ''
 		]);
 
 		return $args;

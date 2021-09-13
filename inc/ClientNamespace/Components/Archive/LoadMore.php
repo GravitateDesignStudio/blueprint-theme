@@ -68,7 +68,7 @@ class LoadMore implements IComponent
 
 	public function render(): void
 	{
-		if (is_single() || $this->next_page >= $this->max_page) {
+		if (is_single() || $this->next_page > $this->max_page) {
 			return;
 		}
 

@@ -85,10 +85,9 @@ class PostsList implements IComponent
 	public $filter_render_functions = [];
 
 
-
 	public function __construct(array $params)
 	{
-		$this->wp_query_obj = isset($params['wp_query_obj']) && is_a($params['wp_query_object'], 'WP_Query') ? $params['wp_query_object'] : null;
+		$this->wp_query_obj = isset($params['wp_query_obj']) && is_a($params['wp_query_obj'], 'WP_Query') ? $params['wp_query_obj'] : null;
 		$this->card_component = Arrays::get_value_as_string($params, 'card_component');
 		$this->block_display = Arrays::get_value_as_bool($params, 'block_display');
 		$this->featured_ids = Arrays::get_value_as_array($params, 'featured_ids');
