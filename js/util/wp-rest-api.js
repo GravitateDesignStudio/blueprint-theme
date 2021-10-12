@@ -33,7 +33,7 @@ function getHeadersAsObject(headers) {
  * @returns {string}
  */
 function getURL(endpoint = '') {
-	const base = typeof window.apiSettings !== 'undefined' ? window.apiSettings.base : '/wp-json/';
+	const base = window?.siteConfig?.apiSettings?.base ?? '/wp-json/';
 
 	return base + endpoint;
 }

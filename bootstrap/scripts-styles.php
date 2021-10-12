@@ -9,10 +9,12 @@ WPUtil\Scripts::enqueue_scripts([
 		'defer' => true,
 		'preload_hook' => 'global_head_top_content',
 		'localize' => [
-			'name' => 'apiSettings',
+			'name' => 'siteConfig',
 			'data' => [
-				'base' => esc_url_raw(rest_url()),
-				'nonce' => is_user_logged_in() ? wp_create_nonce('wp_rest') : ''
+				'apiSettings' => [
+					'base' => esc_url_raw(rest_url()),
+					'nonce' => is_user_logged_in() ? wp_create_nonce('wp_rest') : ''
+				]
 			]
 		]
 	]
@@ -28,3 +30,15 @@ WPUtil\Styles::enqueue_styles([
 		'preload_hook' => 'global_head_top_content'
 	]
 ]);
+
+/**
+ * Dequeue the "wp-block-library" styles on all page requests other than singular
+ * post types that need it
+ */
+add_action('wp_enqueue_scripts', function () {
+	if (is_singular(ClientNamespace\Constants\CPT::BLOG)) {
+		return;
+	}
+
+	wp_dequeue_style('wp-block-library');
+}, 20);
