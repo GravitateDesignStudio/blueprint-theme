@@ -51,8 +51,11 @@ class EmblaPagination {
 		return this.emblaInstance
 			.scrollSnapList()
 			.reduce(
-				(acc) =>
-					acc + `<button class="${this.opts.buttonClassName}" type="button"></button>`,
+				(acc, item, index) =>
+					acc +
+					`<button class="${this.opts.buttonClassName}" type="button" aria-label="Slide ${
+						index + 1
+					}"></button>`,
 				''
 			);
 	}
