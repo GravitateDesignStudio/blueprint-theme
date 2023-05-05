@@ -1,22 +1,52 @@
 <?php
-$acf_group = 'banner';
 
-$button_fields = WPUtil\Vendor\BlueprintBlocks::safe_get_link_fields([
-	'label' => 'Button',
-	'name' => $acf_group . '_button',
-	'includes' => [
-		'none' => 'None',
-		'page' => 'Page Link',
-		'url' => 'URL',
-	],
-]);
+/**
+ * Banner
+ * 
+ * @package Aliat
+ * 
+ * @description This file sets up the banner for different banner types.
+ * 
+ * To create a new banner, add the type to the array, and create a file in the partials folder called
+ * 
+ * fields-banner-{type}.php
+ * 
+ * With the following variables:
+ * 
+ * $block str (the name of the block)
+ * $block_title str (the title of the block)
+ * $fields arr (the fields for the banner)
+ * $location arr (the location for the banner)
+ * $background_fields arr (the background fields for the banner. This is optional and only needs to be overridden if the banner has different background fields than the default banner) 
+ * 
+ */
+
+
+$banners = [
+	'default',
+	'home',
+	'resources'
+];
+
+
+// If All goes as planned, we shouldn't need to mess with anything below this line.
+// -------------------------------------------------------------------------------- // 
+
+foreach ( $banners as $banner ) :
+
+	try {
+		require("partials/fields-banner-$banner.php");
+	} catch (Exception $e) {
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+		continue;
+	}
 
 $tab_content = array_merge(
 	array (
 		array (
-			'key' => 'field_' . $acf_group . '_tab_content',
+			'key' => 'field_' . $block . '_tab_content',
 			'label' => 'Content',
-			'name' => $acf_group . '_tab_content',
+			'name' => $block . '_tab_content',
 			'type' => 'tab',
 			'instructions' => '',
 			'required' => 0,
@@ -26,103 +56,41 @@ $tab_content = array_merge(
 				'class' => '',
 				'id' => '',
 			),
-			'placement' => 'top',
+			'placement' => 'left',
 			'endpoint' => 0,          // end tabs to start a new group
 		),
-		array (
-			'key' => 'field_' . $acf_group . '_title_override',
-			'label' => 'Title (override)',
-			'name' => $acf_group . '_title_override',
-			'type' => 'text',
-			'instructions' => 'The default page title will be used if this field is empty',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'formatting' => 'none',       // none | html
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-			'readonly' => 0,
-			'disabled' => 0,
-		)
 	),
-	$button_fields
+	$fields,
 );
 
 $tab_background = array_merge(
 	array(
 		array (
-			'key' => 'field_' . $acf_group . '_tab_background',
-			'label' => 'Background',
-			'name' => $acf_group . '_tab_background',
+			'key' => 'field_' . $block . '_tab_background',
+			'label' => 'Options',
+			'name' => $block . '_tab_background',
 			'type' => 'tab',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'placement' => 'top',
+			'placement' => 'left',
 			'endpoint' => 0,          // end tabs to start a new group
 		)
 	),
-	ClientNamespace\Banners::get_banner_background_fields()
+	Aliat\Banners::get_banner_background_fields()
 );
 
 acf_add_local_field_group(array (
-	'key' => 'group_' . $acf_group,
-	'title' => 'Banner Settings',
+	'key' => 'group_' . $block,
+	'title' => $block_title,
 	'fields' => array_merge(
 		$tab_content,
 		$tab_background
 	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'post_type', // post_type | post | page | page_template | post_category | taxonomy | options_page
-				'operator' => '!=',
-				'value' => 'global-block',      // if options_page then use: acf-options  | if page_template then use:  template-example.php
-				'order_no' => 0,
-				'group_no' => 1,
-			),
-			array (
-				'param' => 'post_type', // post_type | post | page | page_template | post_category | taxonomy | options_page
-				'operator' => '!=',
-				'value' => 'hellobar',      // if options_page then use: acf-options  | if page_template then use:  template-example.php
-				'order_no' => 0,
-				'group_no' => 1,
-			),
-		),
-	),
+	'location' => $location,
 	'menu_order' => 0,
 	'position' => 'acf_after_title',                // side | normal | acf_after_title
-	'style' => 'default',                   // default | seamless
-	'label_placement' => 'top',             // top | left
-	'instruction_placement' => 'label',     // label | field
 	'hide_on_screen' => array (
-	  // 0 => 'permalink',
 	  // 1 => 'the_content',
-	  // 2 => 'excerpt',
-	  // 3 => 'custom_fields',
-	  // 4 => 'discussion',
-	  // 5 => 'comments',
-	  // 6 => 'revisions',
-	  // 7 => 'slug',
-	  // 8 => 'author',
-	  // 9 => 'format',
-	  // 10 => 'featured_image',
-	  // 11 => 'categories',
-	  // 12 => 'tags',
-	  // 13 => 'send-trackbacks',
 	),
 	'active' => 1,
-	'description' => '',
 ));
+
+endforeach;
